@@ -1,7 +1,7 @@
 package com.metrikdev.metrikapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.net.ConnectivityManager;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,30 +9,34 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
-public class LandingActivity extends AppCompatActivity implements View.OnClickListener {
+import com.google.android.material.snackbar.Snackbar;
+public class LandingActivity extends AppCompatActivity{
+    ConnectivityManager conMgr;
     private Button btnStart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
-
-        btnStart = (Button)findViewById(R.id.btn_start);
-        btnStart.setOnClickListener(this);
+        conMgr = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        btnStart = (Button) findViewById(R.id.btn_start);
+        btnStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (conMgr.getActiveNetworkInfo() != null
+                        && conMgr.getActiveNetworkInfo().isAvailable()
+                        && conMgr.getActiveNetworkInfo().isConnected()) {
+                    Intent intent = new Intent(LandingActivity.this, LoginActivity.class);
+                    LandingActivity.this.startActivity(intent);
+                    LandingActivity.this.finish();
+                } else {
+                    Snackbar snackbar = Snackbar.make(v, "Tidak ada koneksi", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
+            }
+        });
     }
 
-
-    @Override
-    public void onClick(View v){
-        switch (v.getId()){
-            case R.id.btn_start:
-                Intent loginIntent = new Intent(LandingActivity.this, LoginActivity.class);
-                startActivity(loginIntent);
-
-            break;
-        }
-    }
 
     boolean doubleBackToExitPressedOnce = false;
 
