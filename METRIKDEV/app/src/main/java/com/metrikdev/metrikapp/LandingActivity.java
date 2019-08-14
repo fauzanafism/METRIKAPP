@@ -1,6 +1,8 @@
 package com.metrikdev.metrikapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.app.ActionBar;
 import android.content.Intent;
@@ -17,6 +19,7 @@ public class LandingActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_landing);
         conMgr = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         btnStart = (Button) findViewById(R.id.btn_start);
