@@ -22,6 +22,7 @@
         android:gravity="center">
 
         <EditText
+            android:id="@+id/userID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
@@ -34,6 +35,7 @@
             android:maxLines="1"
             android:padding="18dp" />
         <EditText
+            android:id="@+id/userPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
