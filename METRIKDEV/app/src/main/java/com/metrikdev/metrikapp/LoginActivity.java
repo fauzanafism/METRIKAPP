@@ -33,6 +33,7 @@ import java.util.Map;
 import com.metrikdev.metrikapp.R;
 import com.metrikdev.metrikapp.setup.AppController;
 import com.metrikdev.metrikapp.setup.Server;
+import com.metrikdev.metrikapp.soal.Guidance;
 import com.metrikdev.metrikapp.soal.soal;
 
 
@@ -226,7 +227,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         //Jika dipencet, maka akan keluar
-                        Intent intent = new Intent(LoginActivity.this, LandingActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, Guidance.class);
                         LoginActivity.this.startActivity(intent);
                         LoginActivity.this.finish();
                     }

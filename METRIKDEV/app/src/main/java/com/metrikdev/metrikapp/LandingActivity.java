@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 import com.google.android.material.snackbar.Snackbar;
+import com.metrikdev.metrikapp.soal.Guidance;
+
 public class LandingActivity extends AppCompatActivity{
     ConnectivityManager conMgr;
     private Button btnStart;
@@ -29,7 +31,7 @@ public class LandingActivity extends AppCompatActivity{
                 if (conMgr.getActiveNetworkInfo() != null
                         && conMgr.getActiveNetworkInfo().isAvailable()
                         && conMgr.getActiveNetworkInfo().isConnected()) {
-                    Intent intent = new Intent(LandingActivity.this, LoginActivity.class);
+                    Intent intent = new Intent(LandingActivity.this, Guidance.class);
                     LandingActivity.this.startActivity(intent);
                     LandingActivity.this.finish();
                 } else {

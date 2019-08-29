@@ -4,4 +4,18 @@
     <string name="username">ID Number</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+    <string name="guidance">Guidance</string>
+    <string name="babak_penyisihan">Babak Penyisihan</string>
+    <string name="guide1">Terdapat total 75 soal</string>
+    <string name="guide2">+2 poin jika jawaban benar</string>
+    <string name="guide3">-1 poin jika jawaban salah</string>
+    <string name="guide4"> 0 poin untuk jawaban kosong</string>
+    <string name="guide5">Total waktu pengerjaan soal adalah 100 menit dengan waktu 1,33 menit untuk setiap soal</string>
+    <string name="no1">1)</string>
+    <string name="no2">2)</string>
+    <string name="no3">3)</string>
+    <string name="no21"> </string>
+    <string name="no22"> </string>
+    <string name="next">Next</string>
+
 </resources>
