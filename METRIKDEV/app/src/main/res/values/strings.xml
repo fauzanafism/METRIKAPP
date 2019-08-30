@@ -17,5 +17,12 @@
     <string name="no21"> </string>
     <string name="no22"> </string>
     <string name="next">Next</string>
+    <string name="timlolos">Hanya 30 tim yang dapat lolos ke</string>
+    <string name="babak_semifinal">Babak Semifinal</string>
+    <string name="welcome">welcome to</string>
+    <string name="nomorsoal">1</string>
+    <string name="lewati">Lewati</string>
+    <string name="a">a</string>
+    <string name="b">b</string>
 
 </resources>

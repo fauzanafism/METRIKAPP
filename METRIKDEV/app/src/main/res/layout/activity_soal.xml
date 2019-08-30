@@ -6,10 +6,56 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".soal.soal">
-    <TextView
-        android:layout_width="wrap_content"
+
+    <TableLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World"
-        android:layout_gravity="center"/>
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginRight="23dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/no_soal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/nomorsoal"
+                android:textAlignment="center"
+                android:textSize="24sp"/>
+
+            <Button
+                android:id="@+id/button_pass"
+                android:layout_gravity="right"
+                android:text="@string/lewati"
+                android:textSize="20sp" />
+        </TableRow>
+        <TableRow
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_marginTop="100dp">
+            <Button
+                android:id="@+id/btnA"
+                android:text="@string/a"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/buttonabcd"
+
+                android:fontFamily="@font/adam"/>
+
+            <Button
+                android:id="@+id/btnB"
+                android:text="@string/b"
+                android:layout_marginLeft=""
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/buttonabcd"
+                android:fontFamily="@font/adam"/>
+        </TableRow>
+
+    </TableLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

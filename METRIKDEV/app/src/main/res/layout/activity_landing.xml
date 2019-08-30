@@ -16,6 +16,16 @@
         android:layout_height="wrap_content"
         android:src="@drawable/metrik" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:fontFamily="@font/adam"
+        android:text="@string/welcome"
+        android:textColor="#f5a623"
+        android:layout_marginBottom="105dp"/>
+
     <Button
         android:id="@+id/btn_start"
         android:layout_width="300px"
@@ -25,5 +35,6 @@
         android:background="@color/colorAccent"
         android:text="Start"
         android:textColor="#fff"
+        android:fontFamily="@font/adam"
         android:textSize="20sp" />
 </FrameLayout>
