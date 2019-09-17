@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".soal.soal"></activity>
+        <activity android:name=".soal.hasil"></activity>
+        <activity android:name=".soal.soal" />
         <activity android:name=".soal.Guidance" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".LandingActivity" />

@@ -1,61 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/soal"
+    android:fitsSystemWindows="true"
     tools:context=".soal.soal">
+
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
         android:layout_marginLeft="23dp"
-        android:layout_marginRight="23dp">
+        android:layout_marginRight="23dp"
+        android:layout_marginBottom="50dp">
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_gravity="start">
 
             <TextView
                 android:id="@+id/no_soal"
+                android:layout_weight="1"
+                android:fontFamily="@font/mont"
+                android:layout_marginStart="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_gravity="start"
+                android:gravity="start"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
                 android:text="@string/nomorsoal"
-                android:textAlignment="center"
-                android:textSize="24sp"/>
+                android:textAlignment="textStart"
+                android:textSize="30sp" />
 
             <Button
                 android:id="@+id/button_pass"
-                android:layout_gravity="right"
-                android:text="@string/lewati"
-                android:textSize="20sp" />
-        </TableRow>
-        <TableRow
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:layout_marginTop="100dp">
-            <Button
-                android:id="@+id/btnA"
-                android:text="@string/a"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@drawable/buttonabcd"
+                android:layout_weight="1"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:background="@drawable/lewati"/>
 
-                android:fontFamily="@font/adam"/>
-
-            <Button
-                android:id="@+id/btnB"
-                android:text="@string/b"
-                android:layout_marginLeft=""
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@drawable/buttonabcd"
-                android:fontFamily="@font/adam"/>
         </TableRow>
 
     </TableLayout>
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="23dp"
+        android:gravity="center">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="50dp">
+
+            <Button
+                android:id="@+id/button_a"
+                android:layout_width="50dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/bt_jawabanmenupg_a"
+                android:fontFamily="@font/mont"
+                android:text="a"
+                android:textAllCaps="false"
+                android:textColor="@android:color/black"
+                android:textSize="45sp"
+                android:textStyle="bold" />
+
+
+            <Button
+                android:id="@+id/button_b"
+                android:layout_width="50dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/bt_jawabanmenupg_a"
+                android:fontFamily="@font/mont"
+                android:text="b"
+                android:textAllCaps="false"
+                android:textColor="@android:color/black"
+                android:textSize="45sp"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="50dp">
+
+            <Button
+                android:id="@+id/button_c"
+                android:layout_width="50dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/bt_jawabanmenupg_a"
+                android:fontFamily="@font/mont"
+                android:text="c"
+                android:textAllCaps="false"
+                android:textColor="@android:color/black"
+                android:textSize="45sp"
+                android:textStyle="bold" />
+
+
+            <Button
+                android:id="@+id/button_d"
+                android:layout_width="50dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/bt_jawabanmenupg_a"
+                android:fontFamily="@font/mont"
+                android:text="d"
+                android:textAllCaps="false"
+                android:textColor="@android:color/black"
+                android:textSize="45sp"
+                android:textStyle="bold" />
+
+
+        </TableRow>
+
+    </TableLayout>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
