@@ -1,4 +1,4 @@
-package com.metrikdev.metrikapp.soal.;
+package com.metrikdev.metrikapp.soal;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
@@ -15,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -40,12 +40,12 @@ public class soal extends AppCompatActivity {
     String tag_json_obj = "json_obj_req";
 
 
-    private TextView soalCounter, soalCounterPhp;
-    private Button buttonA, buttonB, buttonC, buttonD, buttonPass, ;
+    private TextView soalCounter, soalCounterPhp, pgangka, pgjawaban;
+    private Button buttonA, buttonB, buttonC, buttonD, buttonPass, buttonSelesai;
     SharedPreferences sharedpreferences;
     public static final String TAG_ID = "id";
     public static final String TAG_USERNAME = "username";
-    String identity, username, sumStr, sumStrPhp, txt_a, txt_b, txt_c, txt_d, txt_e, txt_pass, url;
+    String identity, username, sumStr, sumStrPhp, txt_a, txt_b, txt_c, txt_d, txt_pass, url;
     ProgressDialog progressDialog;
     Integer sum, sumPhp, success, pengurang, pengurang_noSoal ;
     @Override
@@ -54,7 +54,7 @@ public class soal extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_soal);
 
-        sharedpreferences = getSharedPreferences(loginPenyisihan.my_shared_preferences, Context.MODE_PRIVATE);
+        sharedpreferences = getSharedPreferences(LoginActivity.my_shared_preferences, Context.MODE_PRIVATE);
         identity = getIntent().getStringExtra("id");
         username = getIntent().getStringExtra("user_name");
         buttonA = (Button) findViewById(R.id.button_a);
@@ -67,11 +67,13 @@ public class soal extends AppCompatActivity {
         txt_c   = "C";
         txt_d   = "D";
         txt_pass = "Lewati";
+        pgangka = (TextView) findViewById(R.id.angka);
+        pgjawaban = (TextView) findViewById(R.id.jawaban);
         soalCounter = (TextView) findViewById(R.id.no_soal);
-        soalCounter.setText(getIntent().getStringExtra("nomor_soal"));
-        soalCounterPhp.setText(getIntent().getStringExtra("nomor_soalPHP"));
+        soalCounterPhp = (TextView) findViewById(R.id.no_soalphp);
+        buttonSelesai = (Button) findViewById(R.id.button_finish);
 
-        //Button Action A-E
+        //Button Action A-D
         buttonA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,7 +102,6 @@ public class soal extends AppCompatActivity {
             }
         });
 
-
         buttonPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,7 +109,13 @@ public class soal extends AppCompatActivity {
             }
         });
 
-
+        buttonSelesai.setVisibility(View.GONE);
+        buttonSelesai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertFinish();
+            }
+        });
 
     }
 
@@ -209,29 +216,7 @@ public class soal extends AppCompatActivity {
         alertDialog.show();
     }
 
-    private void alertDialog_E(){
-        AlertDialog.Builder alertdialogbuilder = new AlertDialog.Builder(this);
-        alertdialogbuilder.setTitle("Peringatan !");
-        alertdialogbuilder
-                .setMessage("Yakin jawabannya E?")
-                .setIcon(R.drawable.baseline_warning_white_48)
-                .setCancelable(false)
-                .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        insert_inputE(username, txt_e);
-                        setSoalCounter();
-                    }
-                })
-                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog alertDialog = alertdialogbuilder.create();
-        alertDialog.show();
-    }
+
 
     private void alertDialog_pass(){
         AlertDialog.Builder alertdialogbuilder = new AlertDialog.Builder(this);
@@ -277,11 +262,11 @@ public class soal extends AppCompatActivity {
                     // Cek error node pada json
                     if (success == 1) {
                         Log.d("Add", jObj.toString());
-                        Toast.makeText(soalPG.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
-                        bs_angka.setText(sumStrPhp);
-                        bs_jawaban.setText(txt_a);
+                        Toast.makeText(soal.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
+                        pgangka.setText(sumStrPhp);
+                        pgjawaban.setText(txt_a);
                     } else {
-                        Toast.makeText(soalPG.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
+                        Toast.makeText(soal.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
                         hideDialog();
                     }
                 } catch (JSONException e) {
@@ -295,7 +280,7 @@ public class soal extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "Error: " + error.getMessage());
-                Toast.makeText(soalPG.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(soal.this, error.getMessage(), Toast.LENGTH_LONG).show();
 //                jawabanError();
                 hideDialog();
             }
@@ -334,12 +319,12 @@ public class soal extends AppCompatActivity {
                     // Cek error node pada json
                     if (success == 1) {
                         Log.d("Add", jObj.toString());
-                        Toast.makeText(soalPG.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
-                        bs_angka.setText(sumStrPhp);
-                        bs_jawaban.setText(txt_b);
+                        Toast.makeText(soal.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
+                        pgangka.setText(sumStrPhp);
+                        pgjawaban.setText(txt_b);
 
                     } else {
-                        Toast.makeText(soalPG.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
+                        Toast.makeText(soal.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
                         hideDialog();
                     }
                 } catch (JSONException e) {
@@ -353,7 +338,7 @@ public class soal extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "Error: " + error.getMessage());
-                Toast.makeText(soalPG.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(soal.this, error.getMessage(), Toast.LENGTH_LONG).show();
 //                jawabanError();
                 hideDialog();
             }
@@ -392,12 +377,12 @@ public class soal extends AppCompatActivity {
                     // Cek error node pada json
                     if (success == 1) {
                         Log.d("Add", jObj.toString());
-                        Toast.makeText(soalPG.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
-                        bs_angka.setText(sumStrPhp);
-                        bs_jawaban.setText(txt_c);
+                        Toast.makeText(soal.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
+                        pgangka.setText(sumStrPhp);
+                        pgjawaban.setText(txt_c);
 
                     } else {
-                        Toast.makeText(soalPG.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
+                        Toast.makeText(soal.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
                         hideDialog();
                     }
                 } catch (JSONException e) {
@@ -411,7 +396,7 @@ public class soal extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "Error: " + error.getMessage());
-                Toast.makeText(soalPG.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(soal.this, error.getMessage(), Toast.LENGTH_LONG).show();
 //                jawabanError();
                 hideDialog();
             }
@@ -450,12 +435,12 @@ public class soal extends AppCompatActivity {
                     // Cek error node pada json
                     if (success == 1) {
                         Log.d("Add", jObj.toString());
-                        Toast.makeText(soalPG.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
-                        bs_angka.setText(sumStrPhp);
-                        bs_jawaban.setText(txt_d);
+                        Toast.makeText(soal.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
+                        pgangka.setText(sumStrPhp);
+                        pgjawaban.setText(txt_d);
 
                     } else {
-                        Toast.makeText(soalPG.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
+                        Toast.makeText(soal.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
                         hideDialog();
                     }
                 } catch (JSONException e) {
@@ -469,7 +454,7 @@ public class soal extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "Error: " + error.getMessage());
-                Toast.makeText(soalPG.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(soal.this, error.getMessage(), Toast.LENGTH_LONG).show();
 //                jawabanError();
                 hideDialog();
             }
@@ -482,64 +467,6 @@ public class soal extends AppCompatActivity {
                 params.put("username", username);
                 params.put("no_soal", sumStrPhp);
                 params.put("jawaban", txt_d);
-                return params;
-            }
-        };
-        AppController.getInstance().addToRequestQueue(strReq, tag_json_obj);
-    }
-
-    private void insert_inputE(final String username, final String txt_e){
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setCancelable(false);
-        progressDialog.setMessage("Mengirim Jawaban ...");
-        showDialog();
-
-        url = url_insert;
-        StringRequest strReq = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-
-            @Override
-            public void onResponse(String response) {
-                Log.d(TAG, "Response: " + response.toString());
-                hideDialog();
-                try {
-                    JSONObject jObj = new JSONObject(response);
-                    success = jObj.getInt(TAG_SUCCESS);
-
-                    // Cek error node pada json
-                    if (success == 1) {
-                        Log.d("Add", jObj.toString());
-                        Toast.makeText(soalPG.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
-                        bs_angka.setText(sumStrPhp);
-                        bs_jawaban.setText(txt_e);
-
-                    } else {
-                        Toast.makeText(soalPG.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
-                        hideDialog();
-                    }
-                } catch (JSONException e) {
-                    // JSON error
-                    e.printStackTrace();
-                }
-
-            }
-        }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Error: " + error.getMessage());
-                Toast.makeText(soalPG.this, error.getMessage(), Toast.LENGTH_LONG).show();
-//                jawabanError();
-                hideDialog();
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                // Posting parameters ke post url
-                Map<String, String> params = new HashMap<String, String>();
-                // memasukkan value ke dalam DB
-                params.put("username", username);
-                params.put("no_soal", sumStrPhp);
-                params.put("jawaban", txt_e);
                 return params;
             }
         };
@@ -566,12 +493,12 @@ public class soal extends AppCompatActivity {
                     // Cek error node pada json
                     if (success == 1) {
                         Log.d("Add", jObj.toString());
-                        Toast.makeText(soalPG.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
-                        bs_angka.setText(sumStrPhp);
-                        bs_jawaban.setText(txt_pass);
+                        Toast.makeText(soal.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
+                        pgangka.setText(sumStrPhp);
+                        pgjawaban.setText(txt_pass);
 
                     } else {
-                        Toast.makeText(soalPG.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
+                        Toast.makeText(soal.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
                         hideDialog();
                     }
                 } catch (JSONException e) {
@@ -585,7 +512,7 @@ public class soal extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "Error: " + error.getMessage());
-                Toast.makeText(soalPG.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(soal.this, error.getMessage(), Toast.LENGTH_LONG).show();
 //                jawabanError();
                 hideDialog();
             }
@@ -634,11 +561,11 @@ public class soal extends AppCompatActivity {
 //                        Intent intent = new Intent(soalPG.this, loginPenyisihan.class);
 //                        finish();
 //                        startActivity(intent);
-                        Intent intent = new Intent(soalPG.this, webviewJawabanPenyisihan.class);
+                        Intent intent = new Intent(soal.this, hasil.class);
                         intent.putExtra("id", identity);
                         intent.putExtra("username",username);
-                        soalPG.this.startActivity(intent);
-                        soalPG.this.finish();
+                        soal.this.startActivity(intent);
+                        soal.this.finish();
                     }
                 })
                 .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
@@ -652,7 +579,7 @@ public class soal extends AppCompatActivity {
     }
 
     public void onBackPressed(){
-        Toast.makeText(soalPG.this, "Anda tidak dapat kembali", Toast.LENGTH_LONG).show();
+        Toast.makeText(soal.this, "Anda tidak dapat kembali", Toast.LENGTH_LONG).show();
     }
 
     public void setSoalCounter(){
@@ -670,15 +597,13 @@ public class soal extends AppCompatActivity {
         soalCounter.setText(sumStr);
         // convert string value from sumStr (which is counted number) to Integer and will create some conditional statement
         Integer strtoint = Integer.valueOf(sumStr);
-        if (strtoint == 66) {
+        if (strtoint == 75) {
             buttonSelesai.setVisibility(View.VISIBLE);
             soalCounter.setVisibility(View.GONE);
-            txt_nosoal.setVisibility(View.GONE);
             buttonA.setVisibility(View.GONE);
             buttonB.setVisibility(View.GONE);
             buttonC.setVisibility(View.GONE);
             buttonD.setVisibility(View.GONE);
-            buttonE.setVisibility(View.GONE);
             buttonPass.setVisibility(View.GONE);
         } else {
             buttonSelesai.setVisibility(View.GONE);
@@ -694,4 +619,4 @@ public class soal extends AppCompatActivity {
         pengurang_noSoal = sum - a;
         sumStr = String.valueOf(pengurang_noSoal);
         soalCounter.setText(sumStr);
-    }
+    }}

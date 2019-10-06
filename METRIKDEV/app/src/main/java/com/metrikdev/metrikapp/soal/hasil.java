@@ -1,6 +1,8 @@
 package com.metrikdev.metrikapp.soal;
 
 import androidx.appcompat.app.AppCompatActivity;
+import com.metrikdev.metrikapp.soal.soal;
+import com.metrikdev.metrikapp.R;
 
 import android.os.Bundle;
 
