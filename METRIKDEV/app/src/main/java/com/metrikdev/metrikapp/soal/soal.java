@@ -40,7 +40,7 @@ public class soal extends AppCompatActivity {
     String tag_json_obj = "json_obj_req";
 
 
-    private TextView soalCounter, soalCounterPhp, pgangka, pgjawaban;
+    private TextView soalCounter, soalCounterPhp;
     private Button buttonA, buttonB, buttonC, buttonD, buttonPass, buttonSelesai;
     SharedPreferences sharedpreferences;
     public static final String TAG_ID = "id";
@@ -55,8 +55,8 @@ public class soal extends AppCompatActivity {
         setContentView(R.layout.activity_soal);
 
         sharedpreferences = getSharedPreferences(LoginActivity.my_shared_preferences, Context.MODE_PRIVATE);
-        identity = getIntent().getStringExtra("id");
-        username = getIntent().getStringExtra("user_name");
+        identity = getIntent().getStringExtra(TAG_ID);
+        username = getIntent().getStringExtra(TAG_USERNAME);
         buttonA = (Button) findViewById(R.id.button_a);
         buttonB = (Button) findViewById(R.id.button_b);
         buttonC = (Button) findViewById(R.id.button_c);
@@ -67,8 +67,6 @@ public class soal extends AppCompatActivity {
         txt_c   = "C";
         txt_d   = "D";
         txt_pass = "Lewati";
-        pgangka = (TextView) findViewById(R.id.angka);
-        pgjawaban = (TextView) findViewById(R.id.jawaban);
         soalCounter = (TextView) findViewById(R.id.no_soal);
         soalCounterPhp = (TextView) findViewById(R.id.no_soalphp);
         buttonSelesai = (Button) findViewById(R.id.button_finish);
@@ -263,8 +261,6 @@ public class soal extends AppCompatActivity {
                     if (success == 1) {
                         Log.d("Add", jObj.toString());
                         Toast.makeText(soal.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
-                        pgangka.setText(sumStrPhp);
-                        pgjawaban.setText(txt_a);
                     } else {
                         Toast.makeText(soal.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
                         hideDialog();
@@ -320,8 +316,6 @@ public class soal extends AppCompatActivity {
                     if (success == 1) {
                         Log.d("Add", jObj.toString());
                         Toast.makeText(soal.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
-                        pgangka.setText(sumStrPhp);
-                        pgjawaban.setText(txt_b);
 
                     } else {
                         Toast.makeText(soal.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
@@ -378,8 +372,6 @@ public class soal extends AppCompatActivity {
                     if (success == 1) {
                         Log.d("Add", jObj.toString());
                         Toast.makeText(soal.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
-                        pgangka.setText(sumStrPhp);
-                        pgjawaban.setText(txt_c);
 
                     } else {
                         Toast.makeText(soal.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
@@ -436,9 +428,6 @@ public class soal extends AppCompatActivity {
                     if (success == 1) {
                         Log.d("Add", jObj.toString());
                         Toast.makeText(soal.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
-                        pgangka.setText(sumStrPhp);
-                        pgjawaban.setText(txt_d);
-
                     } else {
                         Toast.makeText(soal.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
                         hideDialog();
@@ -494,8 +483,6 @@ public class soal extends AppCompatActivity {
                     if (success == 1) {
                         Log.d("Add", jObj.toString());
                         Toast.makeText(soal.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
-                        pgangka.setText(sumStrPhp);
-                        pgjawaban.setText(txt_pass);
 
                     } else {
                         Toast.makeText(soal.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();

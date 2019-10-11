@@ -16,35 +16,25 @@
         android:layout_marginTop="30dp"
         android:layout_marginBottom="40dp"
         android:fontFamily="@font/adam"
-        android:text="Your Answer"
+        android:text="@string/your_answer"
         android:textStyle="bold"
         android:textSize="20sp"
         android:textColor="@android:color/black"/>
-
-    <LinearLayout
-        android:id="@+id/daftarJawaban"
-        android:clickable="true"
-        android:focusable="true"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingLeft="16dp"
+    
+    <ListView
+        android:id="@+id/listjwb"
         android:layout_width="match_parent"
-        android:layout_height="48dp">
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/list_item"/>
+    
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/kelarbut"
+        android:text="@string/kelarbut"
+        android:layout_gravity="center"
+        android:gravity="center"/>
 
-        <TextView
-            android:id="@+id/angka"
-            android:layout_width="24dp"
-            android:layout_height="24dp" />
-
-        <TextView
-            android:id="@+id/jawaban"
-            android:textSize="16sp"
-            android:textColor="@android:color/white"
-            android:layout_marginLeft="32dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>
