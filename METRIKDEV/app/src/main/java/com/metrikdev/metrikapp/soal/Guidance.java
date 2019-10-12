@@ -45,36 +45,11 @@ public class Guidance extends AppCompatActivity {
         });
     }
     public void onBackPressed(){
-        AlertDialog.Builder alertdialogbuilder = new AlertDialog.Builder(this);
-
-        //judul
-        alertdialogbuilder.setTitle("Peringatan !");
-
-        //pesan
-        alertdialogbuilder
-                .setMessage("Yakin ingin Keluar?")
-                .setIcon(R.drawable.baseline_warning_white_24)
-                .setCancelable(false)
-                .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        //Jika dipencet, maka akan keluar
-                        Intent intent = new Intent(Guidance.this, LandingActivity.class);
-                        Guidance.this.startActivity(intent);
-                        Guidance.this.finish();
-                    }
-                })
-                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        //Jika dipencet maka tidak akan terjadi apa-apa
-                        dialog.cancel();
-                    }
-                });
-        //Membuat alert dialog dari builder
-        AlertDialog alertDialog = alertdialogbuilder.create();
-
-        //menampilkan dialog
-        alertDialog.show();
+        Intent intent = new Intent(Guidance.this, LandingActivity.class);
+        Guidance.this.startActivity(intent);
+        Guidance.this.finish();
     }
+
+
 }
+
