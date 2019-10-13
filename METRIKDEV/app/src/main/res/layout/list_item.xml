@@ -3,16 +3,34 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/nosoaljawaban"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TableLayout
+            android:id="@+id/ll_cardview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/jawabanpeserta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"/>
+            <TableRow>
+                <TextView
+                    android:id="@+id/id_cv_txt_nosoal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="9dp"
+                    android:fontFamily="@font/adam"
+                    android:textColor="@android:color/black"
+                    android:textSize="24sp"/>
+                <TextView
+                    android:id="@+id/id_cv_txt_jawaban"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/adam"
+                    android:textColor="@android:color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+            </TableRow>
+
+
+        </TableLayout>
+
 
 </LinearLayout>
