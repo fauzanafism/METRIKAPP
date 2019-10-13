@@ -585,7 +585,7 @@ public class soal extends AppCompatActivity {
         soalCounter.setText(sumStr);
         // convert string value from sumStr (which is counted number) to Integer and will create some conditional statement
         Integer strtoint = Integer.valueOf(sumStr);
-        if (strtoint == 75) {
+        if (strtoint == 6) {
             buttonSelesai.setVisibility(View.VISIBLE);
             soalCounter.setVisibility(View.GONE);
             buttonA.setVisibility(View.GONE);
