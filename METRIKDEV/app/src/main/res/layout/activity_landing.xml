@@ -32,9 +32,10 @@
         android:layout_height="100px"
         android:layout_gravity="center"
         android:layout_marginTop="90dp"
-        android:background="@drawable/allbutton"
+        android:background="@drawable/buttonstart"
         android:text="Start"
-        android:textColor="#fff"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
         android:fontFamily="@font/adam"
         android:textSize="20sp" />
 </FrameLayout>
