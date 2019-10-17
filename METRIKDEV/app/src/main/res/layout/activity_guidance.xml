@@ -113,13 +113,13 @@
 
         <Button
             android:id="@+id/btnLanjut"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
             android:layout_marginTop="25dp"
             android:background="@drawable/allbutton"
             android:text="@string/next"
             android:textColor="#fff"
-            android:fontFamily="@font/adam"
+            android:fontFamily="@font/mont"
             android:layout_gravity="center"/>
 
 

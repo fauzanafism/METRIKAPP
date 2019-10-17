@@ -49,11 +49,14 @@
             android:padding="18dp"/>
         <Button
             android:id="@+id/login_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:layout_gravity="center"
-            android:background="@color/colorAccent"
+            android:background="@drawable/allbutton"
+            android:fontFamily="@font/mont"
+            android:textColor="#fff"
             android:text="@string/login"/>
     </LinearLayout>
 </FrameLayout>

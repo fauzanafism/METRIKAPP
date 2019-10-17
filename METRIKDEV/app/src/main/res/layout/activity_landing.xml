@@ -28,14 +28,13 @@
 
     <Button
         android:id="@+id/btn_start"
-        android:layout_width="300px"
-        android:layout_height="100px"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
         android:layout_gravity="center"
         android:layout_marginTop="90dp"
         android:background="@drawable/buttonstart"
         android:text="Start"
         android:textColor="@android:color/black"
         android:textStyle="bold"
-        android:fontFamily="@font/adam"
-        android:textSize="20sp" />
+        android:fontFamily="@font/mont"/>
 </FrameLayout>
