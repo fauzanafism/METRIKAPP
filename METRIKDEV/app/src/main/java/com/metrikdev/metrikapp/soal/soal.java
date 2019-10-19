@@ -120,7 +120,7 @@ public class soal extends AppCompatActivity {
     //private method
     private void alertDialog_A(){
         AlertDialog.Builder alertdialogbuilder = new AlertDialog.Builder(this);
-        alertdialogbuilder.setTitle("Peringatan !");
+        alertdialogbuilder.setTitle("Hmmm..");
         alertdialogbuilder
                 .setMessage("Yakin jawabannya A?")
                 .setIcon(R.drawable.baseline_warning_white_48)
@@ -144,7 +144,7 @@ public class soal extends AppCompatActivity {
 
     private void alertDialog_B(){
         AlertDialog.Builder alertdialogbuilder = new AlertDialog.Builder(this);
-        alertdialogbuilder.setTitle("Peringatan !");
+        alertdialogbuilder.setTitle("Hmmm..");
         alertdialogbuilder
                 .setMessage("Yakin jawabannya B?")
                 .setIcon(R.drawable.baseline_warning_white_48)
@@ -168,7 +168,7 @@ public class soal extends AppCompatActivity {
 
     private void alertDialog_C(){
         AlertDialog.Builder alertdialogbuilder = new AlertDialog.Builder(this);
-        alertdialogbuilder.setTitle("Peringatan !");
+        alertdialogbuilder.setTitle("Hmmm..");
         alertdialogbuilder
                 .setMessage("Yakin jawabannya C?")
                 .setIcon(R.drawable.baseline_warning_white_48)
@@ -192,7 +192,7 @@ public class soal extends AppCompatActivity {
 
     private void alertDialog_D(){
         AlertDialog.Builder alertdialogbuilder = new AlertDialog.Builder(this);
-        alertdialogbuilder.setTitle("Peringatan !");
+        alertdialogbuilder.setTitle("Hmmm..");
         alertdialogbuilder
                 .setMessage("Yakin jawabannya D?")
                 .setIcon(R.drawable.baseline_warning_white_48)
@@ -218,7 +218,7 @@ public class soal extends AppCompatActivity {
 
     private void alertDialog_pass(){
         AlertDialog.Builder alertdialogbuilder = new AlertDialog.Builder(this);
-        alertdialogbuilder.setTitle("Peringatan !");
+        alertdialogbuilder.setTitle("Hmmm..");
         alertdialogbuilder
                 .setMessage("Yakin Dilewati saja?")
                 .setIcon(R.drawable.baseline_warning_white_48)
@@ -554,12 +554,6 @@ public class soal extends AppCompatActivity {
                         intent.putExtra("username",username);
                         soal.this.startActivity(intent);
                         soal.this.finish();
-                    }
-                })
-                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
                     }
                 });
         AlertDialog alertDialog = builder.create();
